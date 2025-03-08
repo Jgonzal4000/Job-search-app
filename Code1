@@ -1,0 +1,20 @@
+from flask import Flask, render_template, request, jsonify
+import requests
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "<h1>Job Search App is Running</h1>"
+
+@app.route('/search_jobs', methods=['GET'])
+def search_jobs():
+    # Example function to search jobs (can be integrated with APIs like Indeed, LinkedIn, etc.)
+    jobs = [
+        {"title": "Assistant Store Manager", "company": "Target", "location": "Temecula, CA", "salary": "$65K"},
+        {"title": "Retail Manager", "company": "Walmart", "location": "Murrieta, CA", "salary": "$75K"}
+    ]
+    return jsonify(jobs)
+
+if __name__ == '__main__':
+    app.run(debug=True)
